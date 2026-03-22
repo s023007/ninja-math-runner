@@ -15,17 +15,14 @@
         <div class="hud-title">الطالب</div>
         <div class="hud-value" id="hud-player">-</div>
       </div>
-
       <div class="hud-box">
         <div class="hud-title">النقاط</div>
         <div class="hud-value" id="hud-score">0</div>
       </div>
-
       <div class="hud-box">
         <div class="hud-title">المستوى</div>
         <div class="hud-value" id="hud-level">1</div>
       </div>
-
       <div class="hud-box">
         <div class="hud-title">الصف</div>
         <div class="hud-value" id="hud-class">-</div>
@@ -83,28 +80,9 @@
               <div class="card">
                 <h3>فكرة اللعبة</h3>
                 <p class="muted">
-                  لعبة جري تعليمية شبيهة بألعاب Ninja Runner، لكن التقدم فيها يعتمد على حل أسئلة من:
+                  لعبة جري تعليمية، لكن التقدم فيها يعتمد على حل أسئلة من:
                   التباديل، التوافيق، ونظرية ذات الحدين.
                 </p>
-
-                <div class="kpis">
-                  <div class="kpi">
-                    <div class="label">المستويات</div>
-                    <div class="value">2</div>
-                  </div>
-                  <div class="kpi">
-                    <div class="label">الدروس</div>
-                    <div class="value">3</div>
-                  </div>
-                  <div class="kpi">
-                    <div class="label">الصفوف</div>
-                    <div class="value">2</div>
-                  </div>
-                  <div class="kpi">
-                    <div class="label">الصدارة</div>
-                    <div class="value">Top 3</div>
-                  </div>
-                </div>
               </div>
 
               <div class="card" style="margin-top:18px;">
@@ -112,7 +90,6 @@
                 <p class="muted">القفز: زر القفز أو سهم الأعلى أو Space.</p>
                 <p class="muted">الخطر: إذا أجاب الطالب صح ينجو، وإذا أخطأ يخسر أو يعود لنقطة آمنة.</p>
                 <p class="muted">الكنز: لا يحصل عليه إلا بعد الإجابة الصحيحة.</p>
-                <p class="muted">نهاية المستوى الأول: صح = +10 نقاط، خطأ = -2 نقاط ثم ينتقل للمستوى التالي.</p>
               </div>
             </div>
           </div>
@@ -126,7 +103,6 @@
           <h2>سؤال رياضيات</h2>
           <p class="muted" id="question-subtitle">أجب لتتابع اللعب</p>
         </div>
-
         <div class="panel-body">
           <div class="topic-pill" id="question-topic">التباديل</div>
           <div id="question-text">...</div>
@@ -141,46 +117,41 @@
           <h2>انتهت الجولة</h2>
           <p class="muted">تم حفظ النتيجة وعرضها في لوحة الصدارة</p>
         </div>
-
         <div class="panel-body">
           <div class="grid">
-            <div>
-              <div class="card">
-                <h3>ملخص الطالب</h3>
-                <table>
-                  <tbody>
-                    <tr><th>الاسم</th><td id="summary-name">-</td></tr>
-                    <tr><th>الصف</th><td id="summary-class">-</td></tr>
-                    <tr><th>إجمالي النقاط</th><td id="summary-score">0</td></tr>
-                    <tr><th>أعلى مستوى وصل إليه</th><td id="summary-level">1</td></tr>
-                    <tr><th>عدد الكنوز</th><td id="summary-treasures">0</td></tr>
-                    <tr><th>الإجابات الصحيحة</th><td id="summary-correct">0</td></tr>
-                  </tbody>
-                </table>
+            <div class="card">
+              <h3>ملخص الطالب</h3>
+              <table>
+                <tbody>
+                  <tr><th>الاسم</th><td id="summary-name">-</td></tr>
+                  <tr><th>الصف</th><td id="summary-class">-</td></tr>
+                  <tr><th>إجمالي النقاط</th><td id="summary-score">0</td></tr>
+                  <tr><th>أعلى مستوى وصل إليه</th><td id="summary-level">1</td></tr>
+                  <tr><th>عدد الكنوز</th><td id="summary-treasures">0</td></tr>
+                  <tr><th>الإجابات الصحيحة</th><td id="summary-correct">0</td></tr>
+                </tbody>
+              </table>
 
-                <div class="btn-row">
-                  <button class="primary" id="play-again-btn" type="button">إعادة اللعب</button>
-                  <button class="secondary" id="close-result-btn" type="button">إغلاق</button>
-                </div>
+              <div class="btn-row">
+                <button class="primary" id="play-again-btn" type="button">إعادة اللعب</button>
+                <button class="secondary" id="close-result-btn" type="button">إغلاق</button>
               </div>
             </div>
 
-            <div>
-              <div class="card">
-                <h3>لوحة الصدارة</h3>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>الاسم</th>
-                      <th>الصف</th>
-                      <th>النقاط</th>
-                      <th>أعلى Level</th>
-                    </tr>
-                  </thead>
-                  <tbody id="leaderboard-table-body"></tbody>
-                </table>
-              </div>
+            <div class="card">
+              <h3>لوحة الصدارة</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>الاسم</th>
+                    <th>الصف</th>
+                    <th>النقاط</th>
+                    <th>أعلى Level</th>
+                  </tr>
+                </thead>
+                <tbody id="leaderboard-table-body"></tbody>
+              </table>
             </div>
           </div>
         </div>
