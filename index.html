@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ninja Math Runner</title>
+  <title>Ninja Math Runner - No Questions Test</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -16,16 +16,16 @@
         <div class="hud-value" id="hud-player">-</div>
       </div>
       <div class="hud-box">
+        <div class="hud-title">الصف</div>
+        <div class="hud-value" id="hud-class">-</div>
+      </div>
+      <div class="hud-box">
         <div class="hud-title">النقاط</div>
         <div class="hud-value" id="hud-score">0</div>
       </div>
       <div class="hud-box">
         <div class="hud-title">المستوى</div>
         <div class="hud-value" id="hud-level">1</div>
-      </div>
-      <div class="hud-box">
-        <div class="hud-title">الصف</div>
-        <div class="hud-value" id="hud-class">-</div>
       </div>
     </div>
 
@@ -41,16 +41,16 @@
       <div class="panel">
         <div class="panel-head">
           <h1>لعبة Ninja Math Runner</h1>
-          <p class="muted">لطلاب الصف الحادي عشر المتقدم — التباديل والتوافيق ونظرية ذات الحدين</p>
+          <p class="muted">نسخة اختبار بدون أسئلة — فقط للتأكد أن الجري والقفز والاصطدام تعمل جيدًا</p>
         </div>
 
         <div class="panel-body">
           <div class="grid">
             <div>
               <div class="card">
-                <h2>ابدأ اللعب</h2>
+                <h2>ابدأ التجربة</h2>
                 <p class="muted" style="margin-bottom:16px;">
-                  اكتب اسم الطالب، اختر الصف، ثم اضغط زر البداية.
+                  هذه النسخة بدون أسئلة نهائيًا. الهدف فقط التأكد أن اللعبة نفسها تعمل.
                 </p>
 
                 <div class="form-group">
@@ -78,35 +78,14 @@
 
             <div>
               <div class="card">
-                <h3>فكرة اللعبة</h3>
-                <p class="muted">
-                  لعبة جري تعليمية، لكن التقدم فيها يعتمد على حل أسئلة من:
-                  التباديل، التوافيق، ونظرية ذات الحدين.
-                </p>
-              </div>
-
-              <div class="card" style="margin-top:18px;">
-                <h3>طريقة اللعب</h3>
-                <p class="muted">القفز: زر القفز أو سهم الأعلى أو Space.</p>
-                <p class="muted">الخطر: إذا أجاب الطالب صح ينجو، وإذا أخطأ يخسر أو يعود لنقطة آمنة.</p>
-                <p class="muted">الكنز: لا يحصل عليه إلا بعد الإجابة الصحيحة.</p>
+                <h3>طريقة الاختبار</h3>
+                <p class="muted">الكنز يزيد النقاط مباشرة.</p>
+                <p class="muted">الخطر ينقص النقاط مباشرة ويعيد اللاعب لنقطة آمنة.</p>
+                <p class="muted">نهاية المستوى الأول: +10 نقاط ثم الانتقال للمستوى الثاني.</p>
+                <p class="muted">نهاية المستوى الثاني: يتم حفظ النتيجة النهائية.</p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="question-modal" class="overlay hidden">
-      <div class="panel">
-        <div class="panel-head">
-          <h2>سؤال رياضيات</h2>
-          <p class="muted" id="question-subtitle">أجب لتتابع اللعب</p>
-        </div>
-        <div class="panel-body">
-          <div class="topic-pill" id="question-topic">التباديل</div>
-          <div id="question-text">...</div>
-          <div class="answers" id="answers-container"></div>
         </div>
       </div>
     </div>
@@ -117,6 +96,7 @@
           <h2>انتهت الجولة</h2>
           <p class="muted">تم حفظ النتيجة وعرضها في لوحة الصدارة</p>
         </div>
+
         <div class="panel-body">
           <div class="grid">
             <div class="card">
@@ -128,7 +108,7 @@
                   <tr><th>إجمالي النقاط</th><td id="summary-score">0</td></tr>
                   <tr><th>أعلى مستوى وصل إليه</th><td id="summary-level">1</td></tr>
                   <tr><th>عدد الكنوز</th><td id="summary-treasures">0</td></tr>
-                  <tr><th>الإجابات الصحيحة</th><td id="summary-correct">0</td></tr>
+                  <tr><th>عدد مرات الاصطدام</th><td id="summary-correct">0</td></tr>
                 </tbody>
               </table>
 
