@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ninja Math Runner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="game-container"></div>
+
+    <div id="hud" class="hidden">
+      <div class="hud-box"><div class="hud-title">الطالب</div><div class="hud-value" id="hud-player">-</div></div>
+      <div class="hud-box"><div class="hud-title">الصف</div><div class="hud-value" id="hud-class">-</div></div>
+      <div class="hud-box"><div class="hud-title">النقاط</div><div class="hud-value" id="hud-score">0</div></div>
+      <div class="hud-box"><div class="hud-title">المستوى</div><div class="hud-value" id="hud-level">1</div></div>
+    </div>
+
+    <button id="jump-btn" class="hidden">قفز</button>
+
+    <div id="leaderboard-mini" class="hidden">
+      <h3>أفضل 3 طلاب</h3>
+      <div id="top3-list" class="top3"></div>
+      <div class="status-chip" id="storage-status">وضع التخزين: محلي مؤقت</div>
+    </div>
+
+    <div id="start-screen" class="overlay">
+      <div class="panel">
+        <div class="panel-head">
+          <div class="title-row">
+            <img src="assets/ui/logo.png" alt="logo" class="logo-img" />
+            <div>
+              <h1>Ninja Math Runner</h1>
+              <p class="muted">لطلاب الصف الحادي عشر المتقدم — التباديل والتوافيق ونظرية ذات الحدين</p>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body grid">
+          <div>
+            <div class="card">
+              <h2>ابدأ اللعب</h2>
+              <p class="muted intro-text">اكتب اسم الطالب واختر الصف، ثم ابدأ الجولة. عند الخطر أو الكنز أو نهاية المستوى ستظهر أسئلة رياضيات. الإجابة الصحيحة تنقذ اللاعب أو تمنحه نقاطًا إضافية.</p>
+              <div class="form-group">
+                <label for="student-name">اسم الطالب</label>
+                <input id="student-name" type="text" placeholder="مثال: زياد الرواحي" maxlength="40" />
+              </div>
+              <div class="form-group">
+                <label for="student-class">الصف</label>
+                <select id="student-class">
+                  <option value="">اختر الصف</option>
+                  <option value="11/3">11/3</option>
+                  <option value="11/4">11/4</option>
+                </select>
+              </div>
+              <div class="btn-row">
+                <button id="start-btn" class="primary">ابدأ اللعبة</button>
+                <button id="refresh-board-btn" class="secondary">تحديث لوحة الصدارة</button>
+              </div>
+              <div id="firebase-status" class="status-chip">لم يتم ربط Firebase بعد — سيتم استخدام التخزين المحلي للتجربة</div>
+            </div>
+          </div>
+          <div>
+            <div class="card">
+              <h3>فكرة اللعب</h3>
+              <p class="muted">اللاعب يجري تلقائيًا ويقفز ويتجنب الأخطار. عند لمس العدو أو السقوط أو محاولة أخذ كنز، تظهر نافذة سؤال. صح = نجاة أو مكافأة، خطأ = خسارة نقاط أو فقدان الكنز.</p>
+              <div class="kpis">
+                <div class="kpi"><div class="label">المستويات</div><div class="value">2</div></div>
+                <div class="kpi"><div class="label">الدروس</div><div class="value">3</div></div>
+                <div class="kpi"><div class="label">الصفوف</div><div class="value">2</div></div>
+                <div class="kpi"><div class="label">الصدارة</div><div class="value">Top 3</div></div>
+              </div>
+            </div>
+            <div class="card mt18">
+              <h3>التحكم</h3>
+              <p class="muted">على الكمبيوتر: سهم أعلى أو Space للقفز.</p>
+              <p class="muted">على الهاتف: زر "قفز" أسفل الشاشة.</p>
+              <p class="muted">سؤال نهاية Level 1: إجابة صحيحة = +10، وإجابة خاطئة = -2، ثم ينتقل إلى Level 2.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="question-modal" class="overlay hidden">
+      <div class="panel small-panel">
+        <div class="panel-head">
+          <h2>سؤال رياضيات</h2>
+          <p class="muted" id="question-subtitle">أجب لتتابع</p>
+        </div>
+        <div class="panel-body">
+          <div id="question-topic" class="topic-pill">التباديل</div>
+          <div id="question-text">...</div>
+          <div id="answers-container" class="answers"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="result-modal" class="overlay hidden">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>انتهت الجولة</h2>
+          <p class="muted">تم حفظ النتيجة وإضافتها إلى لوحة الصدارة</p>
+        </div>
+        <div class="panel-body grid">
+          <div class="card">
+            <h3>ملخص الطالب</h3>
+            <table>
+              <tbody>
+                <tr><th>الاسم</th><td id="summary-name">-</td></tr>
+                <tr><th>الصف</th><td id="summary-class">-</td></tr>
+                <tr><th>إجمالي النقاط</th><td id="summary-score">0</td></tr>
+                <tr><th>أعلى مستوى</th><td id="summary-level">1</td></tr>
+                <tr><th>عدد الكنوز</th><td id="summary-treasures">0</td></tr>
+                <tr><th>الإجابات الصحيحة</th><td id="summary-correct">0</td></tr>
+              </tbody>
+            </table>
+            <div class="btn-row">
+              <button id="play-again-btn" class="primary">إعادة اللعب</button>
+              <button id="close-result-btn" class="secondary">إغلاق</button>
+            </div>
+          </div>
+          <div class="card">
+            <h3>لوحة الصدارة</h3>
+            <table>
+              <thead>
+                <tr><th>#</th><th>الاسم</th><th>الصف</th><th>النقاط</th><th>أعلى Level</th></tr>
+              </thead>
+              <tbody id="leaderboard-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.min.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
