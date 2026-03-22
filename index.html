@@ -53,7 +53,7 @@
               <div class="card">
                 <h2>ابدأ اللعب</h2>
                 <p class="muted" style="margin-bottom:16px;">
-                  اكتب اسم الطالب، اختر الصف، ثم اضغط زر البداية. أثناء اللعب سيواجه الطالب أخطارًا وكنوزًا وأسئلة رياضيات مرتبطة بالدروس.
+                  اكتب اسم الطالب، اختر الصف، ثم اضغط زر البداية.
                 </p>
 
                 <div class="form-group">
@@ -110,9 +110,9 @@
               <div class="card" style="margin-top:18px;">
                 <h3>طريقة اللعب</h3>
                 <p class="muted">القفز: زر القفز أو سهم الأعلى أو Space.</p>
-                <p class="muted">الخطر: إذا أجاب الطالب صح ينجو، وإذا أخطأ يخسر نقاطًا أو يعود لنقطة آمنة.</p>
+                <p class="muted">الخطر: إذا أجاب الطالب صح ينجو، وإذا أخطأ يخسر أو يعود لنقطة آمنة.</p>
                 <p class="muted">الكنز: لا يحصل عليه إلا بعد الإجابة الصحيحة.</p>
-                <p class="muted">نهاية المستوى الأول: إذا أجاب صح يحصل على 10 نقاط إضافية، وإذا أخطأ تُخصم منه نقطتان لكنه ينتقل إلى المستوى الثاني.</p>
+                <p class="muted">نهاية المستوى الأول: صح = +10 نقاط، خطأ = -2 نقاط ثم ينتقل للمستوى التالي.</p>
               </div>
             </div>
           </div>
@@ -149,30 +149,12 @@
                 <h3>ملخص الطالب</h3>
                 <table>
                   <tbody>
-                    <tr>
-                      <th>الاسم</th>
-                      <td id="summary-name">-</td>
-                    </tr>
-                    <tr>
-                      <th>الصف</th>
-                      <td id="summary-class">-</td>
-                    </tr>
-                    <tr>
-                      <th>إجمالي النقاط</th>
-                      <td id="summary-score">0</td>
-                    </tr>
-                    <tr>
-                      <th>أعلى مستوى وصل إليه</th>
-                      <td id="summary-level">1</td>
-                    </tr>
-                    <tr>
-                      <th>عدد الكنوز</th>
-                      <td id="summary-treasures">0</td>
-                    </tr>
-                    <tr>
-                      <th>الإجابات الصحيحة</th>
-                      <td id="summary-correct">0</td>
-                    </tr>
+                    <tr><th>الاسم</th><td id="summary-name">-</td></tr>
+                    <tr><th>الصف</th><td id="summary-class">-</td></tr>
+                    <tr><th>إجمالي النقاط</th><td id="summary-score">0</td></tr>
+                    <tr><th>أعلى مستوى وصل إليه</th><td id="summary-level">1</td></tr>
+                    <tr><th>عدد الكنوز</th><td id="summary-treasures">0</td></tr>
+                    <tr><th>الإجابات الصحيحة</th><td id="summary-correct">0</td></tr>
                   </tbody>
                 </table>
 
